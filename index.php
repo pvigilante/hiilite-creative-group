@@ -51,7 +51,6 @@ function hiilite_login_logo() { ?>
 		document.querySelector('#login h1 a').setAttribute('href', 'http://hiilite.com');
 		hilogo.insertBefore(node, hilogo.firstChild);
 	};*/
-	};*/
 		
 	</script>
 <?php }
@@ -116,6 +115,11 @@ add_action( 'admin_enqueue_scripts', 'hiilite_admin_styles' );
 //change the footer text
 function hiilite_admin_footer_text () {
     echo '<a href="http://www.hiilite.com/marketing-strategy/"><img src="' . plugins_url( 'images/hiilite-logo-lettermark.png' , __FILE__ ) . '"> Marketing</a>, <a href="http://www.hiilite.com/seo-social-media/">SEO</a>, <a href="http://www.hiilite.com/website-design/">Web Design </a> by <a href="http://www.hiilite.com/">Hiilite Marketing + Web Design in Kelowna</a>';
+	?>
+	<!-- Start of hiilite Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","hiilite.zendesk.com");/*]]>*/</script>
+<!-- End of hiilite Zendesk Widget script -->
+	<?php
 }
 add_filter( 'admin_footer_text', 'hiilite_admin_footer_text' );
 
