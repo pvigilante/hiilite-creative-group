@@ -3,7 +3,7 @@ Contributors: Hiilite Creative Group
 Tags: admin, backend, hiilite
 Requires at least: 3.0.1
 Tested up to: 4.2.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,3 +49,8 @@ Built by the development team at: http://hiilite.com
 = 1.0.3 =
 
 * Added recommended plugins, including WordPress SEO by Yoast, WPBakery Visual Composer, Backup Buddy, Sucuri Security, InfiniteWP Client and Math Captcha
+
+= 1.0.4 =
+
+* Added recommended plugins and new footer text panel
+
