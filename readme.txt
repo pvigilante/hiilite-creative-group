@@ -3,7 +3,7 @@ Contributors: Hiilite Creative Group
 Tags: admin, backend, hiilite
 Requires at least: 3.0.1
 Tested up to: 4.2.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,3 +54,7 @@ Built by the development team at: http://hiilite.com
 
 * Added recommended plugins and new footer text panel
 
+
+= 1.0.5 =
+
+* Minor bug fixes

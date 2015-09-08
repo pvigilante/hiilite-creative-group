@@ -3,7 +3,7 @@
 * Plugin Name: Hiilite Admin
 * Plugin URI: http://hiilite.com
 * Description: This plugin customizes the WordPress login screen to Hiilite branding.
-* Version: 1.0.4
+* Version: 1.0.5
 * Author: Hiilite Creative Group
 * Author URI: http://hiilite.com/team/
 * License: GPLv2
@@ -192,7 +192,7 @@ function hiilite_default_options() {
 	$hiilite_settings = array (
 		'enable_plugin' => false,	// Enable plugin switch
 		'disable_notice' => false,	// // Disable notice that is displayed when enable_plugin is false
-		'hiilite_other' => '<div id="hiilite_admin_footer" style="width:100%;clear:both;background:#23282d;line-height:2em;color:white; text-align:center;">Copyright &copy; '.date('Y').' '.bloginfo('name').'. All rights reserved. <a style="color:white;" href="https://hiilite.com/">Kelowna Website Design</a>, <a style="color:white;" href="https://hiilite.com/marketing-strategy/">Strategic Marketing</a>, and <a style="color:white;" href="https://hiilite.com/seo-social-media/">SEO</a> by <a style="color:white;" href="https://hiilite.com/">Marketing and Web Agency Hiilite</a></div>'
+		'hiilite_other' => '<div id="hiilite_admin_footer" style="width:100%;clear:both;background:#23282d;line-height:2em;color:white; text-align:center;">Copyright &copy; '.date('Y').' '.get_bloginfo('name').'. All rights reserved. <a style="color:white;" href="https://hiilite.com/">Kelowna Website Design</a>, <a style="color:white;" href="https://hiilite.com/marketing-strategy/">Strategic Marketing</a>, and <a style="color:white;" href="https://hiilite.com/seo-social-media/">SEO</a> by <a style="color:white;" href="https://hiilite.com/">Marketing and Web Agency Hiilite</a></div>'
 	);
 	return apply_filters( 'hiilite_default_options', $hiilite_settings );
 }
@@ -372,7 +372,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'backupbuddy-5.1.0.9', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/backupbuddy-5.1.0.9.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            //'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -382,7 +382,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'js_composer', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/js_composer.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+           // 'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -392,7 +392,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'gravityforms', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/gravityforms.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            //'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -402,7 +402,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'revslider', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/revslider.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            //'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -414,11 +414,6 @@ function hiilite_register_required_plugins() {
             'slug'      => 'iwp-client',
             'required'  => false,
         ), 
-		array(
-            'name'      => 'WP SEO Redirect 301',
-            'slug'      => 'wp-seo-redirect-301',
-            'required'  => false,
-        ),
 		array(
             'name'      => 'WordPress SEO by Yoast',
             'slug'      => 'wordpress-seo',
