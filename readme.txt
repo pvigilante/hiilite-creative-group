@@ -3,10 +3,10 @@ Contributors: Hiilite Creative Group
 Tags: admin, backend, hiilite
 Requires at least: 3.0.1
 Tested up to: 4.2.1
-Stable tag: 1.0.5
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
+~Current Version:1.0.7~
 
 == Description ==
 
@@ -23,7 +23,7 @@ Built by the development team at: http://hiilite.com
 
 2) Download the latest from:
 
-https://wordpress.org/plugins/hiilite-creative-group-branding/
+https://github.com/pvigilante/hiilite-creative-group-branding
 
 3) Login to WordPress admin, click on Plugins / Add New / Upload, then upload the zip file you just downloaded.
 
@@ -54,7 +54,17 @@ Built by the development team at: http://hiilite.com
 
 * Added recommended plugins and new footer text panel
 
-
 = 1.0.5 =
 
 * Minor bug fixes
+
+= 1.0.6 =
+
+* Adding GitHub update support
+
+= 1.0.7 =
+
+* Adding GitHub update support
+
+
+

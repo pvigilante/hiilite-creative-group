@@ -3,7 +3,7 @@
 * Plugin Name: Hiilite Admin
 * Plugin URI: http://hiilite.com
 * Description: This plugin customizes the WordPress login screen to Hiilite branding.
-* Version: 1.0.5
+* Version: 1.0.7
 * Author: Hiilite Creative Group
 * Author URI: http://hiilite.com/team/
 * License: GPLv2
@@ -238,13 +238,32 @@ if ( is_admin() || strstr( $_SERVER['PHP_SELF'], 'wp-admin/' ) ) {
 	 *
 	 */
 	require_once( HIILITE_DIR . "/admin.inc.php" );
-
+	require_once( HIILITE_DIR . '/github-plugin-updater/updater.php' );
 	/**
 	 * Adding WordPress plugin action links.
 	 *
 	 * @param array $links
 	 * @return array
 	 */
+	
+	
+	$config = array(
+        'slug'                  => plugin_basename( __FILE__ ),
+        'proper_folder_name'    => 'hiilite-creative-group-branding',
+        'api_url'               => 'https://api.github.com/repos/pvigilante/hiilite-creative-group-branding',
+        'raw_url'               => 'https://raw.github.com/pvigilante/hiilite-creative-group-branding/master',
+        'github_url'            => 'https://github.com/pvigilante/hiilite-creative-group-branding',
+        'zip_url'               => 'https://github.com/pvigilante/hiilite-creative-group-branding/zipball/master',
+        'sslverify'             => true,
+        'requires'              => '3.0',
+        'tested'                => '4.3',
+        'readme'                => 'README.md',
+        'access_token'          => ''
+    );
+ 
+    new WP_GitHub_Updater( $config );
+	
+	
 	function hiilite_plugin_actions_links( $links ) {
 
 		return array_merge(
@@ -343,6 +362,7 @@ function modify_admin_bar( $wp_admin_bar ){
 
 require_once dirname( __FILE__ ) . '/Plugin-Activation/class-tgm-plugin-activation.php';
 
+
 add_action( 'tgmpa_register', 'hiilite_register_required_plugins' );
 
 
@@ -372,7 +392,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'backupbuddy-5.1.0.9', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/backupbuddy-5.1.0.9.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            //'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -382,7 +402,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'js_composer', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/js_composer.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-           // 'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -392,7 +412,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'gravityforms', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/gravityforms.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            //'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -402,7 +422,7 @@ function hiilite_register_required_plugins() {
             'slug'               => 'revslider', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/revslider.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            //'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -414,6 +434,11 @@ function hiilite_register_required_plugins() {
             'slug'      => 'iwp-client',
             'required'  => false,
         ), 
+		array(
+            'name'      => 'WP SEO Redirect 301',
+            'slug'      => 'wp-seo-redirect-301',
+            'required'  => false,
+        ),
 		array(
             'name'      => 'WordPress SEO by Yoast',
             'slug'      => 'wordpress-seo',
@@ -477,9 +502,217 @@ function hiilite_register_required_plugins() {
             'complete'                        => __( 'All plugins installed and activated successfully. %s', 'tgmpa' ), // %s = dashboard link.
             'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
         )
-    );
+    ); 
 
     tgmpa( $plugins, $config );
 
 }
+
+
+
+
+
+
+///////////////////////////////////
+//
+//	HIILITE SEO REPORT
+//
+/////////////////////////////////
+if(file_exists(HIILITE_DIR.'/keys/Hiilite GA-295b6f44941a.p12')) {
+	add_action( 'admin_menu', 'hiilite_seo_report_menu' );
+	add_action( 'init', 'create_hiilite_seo_reports' );
+	add_action( 'admin_init', 'hiilite_seo_meta' );
+	add_action( 'save_post', 'add_hii_seo_report_fields', 10, 2 );
+}
+	
+
+function hiilite_seo_report_menu() {
+	add_menu_page ( 'Hiilite Analytics SEO Report', 'SEO Report', 'manage_options', 'hiilite-seo-analytics-reports', 'hiilite_seo_report_options', 'dashicons-chart-line' );
+}
+
+function hiilite_seo_report_options() {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+	include(HIILITE_DIR . '/hiilite_seo_report.php');
+}
+
+	
+function create_hiilite_seo_reports() {
+    register_post_type( 'hii_seo_reports',
+        array(
+            'labels' => array(
+                'name' => 'Hiilite SEO Reports',
+                'singular_name' => 'SEO Report',
+                'add_new' => 'Add New',
+                'add_new_item' => 'Add SEO Report',
+                'edit' => 'Edit',
+                'edit_item' => 'Edit SEO Report',
+                'new_item' => 'New SEO Report',
+                'view' => 'View',
+                'view_item' => 'View SEO Report',
+                'search_items' => 'Search SEO Reports',
+                'not_found' => 'No SEO Reports found',
+                'not_found_in_trash' => 'No SEO Reports found in Trash',
+                'parent' => 'Parent SEO Report'
+            ),
+ 
+            'public' => true,
+           // 'menu_position' => 15,
+            'supports' => array( 'title', 'editor', 'custom-fields' ),
+            'taxonomies' => array( '' ),
+            'menu_icon' => plugins_url( 'images/image.png', __FILE__ ),
+            'has_archive' => true
+        )
+    );
+}
+
+function hiilite_seo_meta() {
+	add_meta_box( 'hiiseo_account_info',
+        'Report Account',
+        'display_hiiseo_report_account',
+        'hii_seo_reports', 'normal', 'high'
+    );
+	
+    add_meta_box( 'hiiseo_checklist',
+        'SEO Checklist',
+        'display_hiiseo_checklist',
+        'hii_seo_reports', 'normal', 'high'
+    );
+	
+	
+	add_meta_box( 'hiiseo_result',
+        'Search Results',
+        'display_hiiseo_results',
+        'hii_seo_reports', 'normal', 'high'
+    );
+}
+
+
+function display_hiiseo_report_account($seo_report){
+	// Retrieve current name of the Director and Movie Rating based on review ID
+    $hiiseo_ga_account_id = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_ga_account_id', true ) );
+    $hiiseo_ga_startdate = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_ga_startdate', true ) );
+    
+       ?>
+    <table>
+        <tr>
+            <td style="width: 100%">Google Account ID</td>
+            <td>
+            	<input type="text" name="hiiseo_ga_account_id" value="<?php echo $hiiseo_ga_account_id; ?>">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">Report Start Date</td>
+            <td>
+                <input type="date" name="hiiseo_ga_startdate" value="<?php echo $hiiseo_ga_startdate; ?>">
+            </td>
+        </tr>
+       
+    </table>
+    <?php
+}
+
+
+
+function display_hiiseo_checklist($seo_report){
+	// Retrieve current name of the Director and Movie Rating based on review ID
+    $hiiseo_checklist_items = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_checklist_items', true ) );
+    $hiiseo_page_authority = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_page_authority', true ) );
+    $hiiseo_domain_authority = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_domain_authority', true ) );
+    $hiiseo_urls_indexed = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_urls_indexed', true ) );
+    ?>
+    <table>
+        <tr>
+            <td style="width: 100%">SEO Checklist</td>
+            <td>
+            	<textarea size="80" name="hiiseo_checklist_items"><?php echo $hiiseo_checklist_items; ?></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">Page Authority</td>
+            <td>
+                <input type="text" name="hiiseo_page_authority" value="<?php echo $hiiseo_page_authority; ?>">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">Domain Authority</td>
+            <td>
+                <input type="text" name="hiiseo_domain_authority" value="<?php echo $hiiseo_domain_authority; ?>">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 150px">URLs Indexed</td>
+            <td>
+                <input type="text" name="hiiseo_urls_indexed" value="<?php echo $hiiseo_urls_indexed; ?>">
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+function display_hiiseo_results($seo_report){
+	// Retrieve current name of the Director and Movie Rating based on review ID
+    $hiiseo_results_at_setup = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_results_at_setup', true ) );
+    $hiiseo_results_at_report_date = esc_html( get_post_meta( $seo_report->ID, 'hiiseo_results_at_report_date', true ) );
+       ?>
+    <table>
+        <tr>
+            <td style="width: 100%">At Setup</td>
+            <td>
+            	<textarea size="80" name="hiiseo_results_at_setup"><?php echo $hiiseo_results_at_setup; ?></textarea>
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="width: 150px">At Report Date</td>
+            <td>
+                <textarea size="80" name="hiiseo_results_at_report_date"><?php echo $hiiseo_results_at_report_date; ?></textarea>
+            </td>
+        </tr>
+       
+    </table>
+    <?php
+}
+
+
+	
+function add_hii_seo_report_fields( $seo_report_id, $seo_report ) {
+    // Check post type for movie reviews
+    if ( $seo_report->post_type == 'hii_seo_reports' ) {
+        // Store data in post meta table if present in post data
+		if ( isset( $_POST['hiiseo_checklist_items'] ) && $_POST['hiiseo_ga_account_id'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_ga_account_id', $_POST['hiiseo_ga_account_id'] );
+        }
+		
+		if ( isset( $_POST['hiiseo_checklist_items'] ) && $_POST['hiiseo_ga_startdate'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_ga_startdate', $_POST['hiiseo_ga_startdate'] );
+        }
+		
+        if ( isset( $_POST['hiiseo_checklist_items'] ) && $_POST['hiiseo_checklist_items'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_checklist_items', $_POST['hiiseo_checklist_items'] );
+        } 
+		
+		if ( isset( $_POST['hiiseo_page_authority'] ) && $_POST['hiiseo_page_authority'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_page_authority', $_POST['hiiseo_page_authority'] );
+        }
+		
+		if ( isset( $_POST['hiiseo_domain_authority'] ) && $_POST['hiiseo_domain_authority'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_domain_authority', $_POST['hiiseo_domain_authority'] );
+        }
+		
+		if ( isset( $_POST['hiiseo_urls_indexed'] ) && $_POST['hiiseo_urls_indexed'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_urls_indexed', $_POST['hiiseo_urls_indexed'] );
+        }
+		
+		if ( isset( $_POST['hiiseo_results_at_setup'] ) && $_POST['hiiseo_results_at_setup'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_results_at_setup', $_POST['hiiseo_results_at_setup'] );
+        }
+		
+		if ( isset( $_POST['hiiseo_results_at_report_date'] ) && $_POST['hiiseo_results_at_report_date'] != '' ) {
+            update_post_meta( $seo_report_id, 'hiiseo_results_at_report_date', $_POST['hiiseo_results_at_report_date'] );
+        }
+    }
+}
+
 ?>
