@@ -392,7 +392,6 @@ function hiilite_register_required_plugins() {
             'slug'               => 'backupbuddy-5.1.0.9', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/backupbuddy-5.1.0.9.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -400,40 +399,42 @@ function hiilite_register_required_plugins() {
 		array(
             'name'               => 'WPBakery Visual Composer', // The plugin name.
             'slug'               => 'js_composer', // The plugin slug (typically the folder name).
-            'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/js_composer.zip', // The plugin source.
+            'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/visual-composer.4.7.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
         ),
 		array(
             'name'               => 'Gravity Forms', // The plugin name.
             'slug'               => 'gravityforms', // The plugin slug (typically the folder name).
             'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/gravityforms.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
+ 
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
+        ),
+		array(
+            'name'               => 'NoCaptcha for Gravity Forms', // The plugin name.
+            'slug'               => 'gravity-forms-no-captcha-recaptcha', // The plugin slug (typically the folder name).
+            'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/gravity-forms-no-captcha-recaptcha.zip', // The plugin source.
+            'required'           => false, // If false, the plugin is only 'recommended' instead of required.
+ 
+            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
         ),
 		array(
             'name'               => 'Revolution Slider', // The plugin name.
             'slug'               => 'revslider', // The plugin slug (typically the folder name).
-            'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/revslider.zip', // The plugin source.
+            'source'             => plugin_dir_path( __FILE__ ) . '/Plugin-Activation/plugins/slider-revolution.5.0.zip', // The plugin source.
             'required'           => false, // If false, the plugin is only 'recommended' instead of required.
-            'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-            'external_url'       => '', // If set, overrides default API URL and points to an external URL.
         ),
-
-        // This is an example of how to include a plugin from the WordPress Plugin Repository.
-        array(
-            'name'      => 'InfiniteWP Client',
-            'slug'      => 'iwp-client',
+		array(
+            'name'      => 'Admin Menu Editor',
+            'slug'      => 'admin-menu-editor',
             'required'  => false,
-        ), 
+        ),
 		array(
             'name'      => 'WP SEO Redirect 301',
             'slug'      => 'wp-seo-redirect-301',
@@ -442,11 +443,6 @@ function hiilite_register_required_plugins() {
 		array(
             'name'      => 'WordPress SEO by Yoast',
             'slug'      => 'wordpress-seo',
-            'required'  => false,
-        ),
-		array(
-            'name'      => 'Math Captcha',
-            'slug'      => 'wp-math-captcha',
             'required'  => false,
         ),
 		array(
