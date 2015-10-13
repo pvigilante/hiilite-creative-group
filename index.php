@@ -3,7 +3,7 @@
 * Plugin Name: Hiilite Admin
 * Plugin URI: http://hiilite.com
 * Description: This plugin customizes the WordPress login screen to Hiilite branding.
-* Version: 1.0.7
+* Version: 1.0.8
 * Author: Hiilite Creative Group
 * Author URI: http://hiilite.com/team/
 * License: GPLv2
